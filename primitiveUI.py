@@ -9,6 +9,10 @@ except:
 import maya.OpenMayaUI as omui
 import os
 
+import importlib
+from . import primitiveUtil as pritil
+importlib.reload(pritil)
+
 ICON_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__),'icons'))
 
 class PrimitiveCreator(QtWidgets.QDialog):
@@ -42,7 +46,9 @@ class PrimitiveCreator(QtWidgets.QDialog):
 		self.button_layout = QtWidgets.QHBoxLayout()
 		self.main_layout.addLayout(self.button_layout)
 		self.create_button = QtWidgets.QPushButton('CREATE')
+		self.create_button.clicked.connect(self.dorenameobj)	
 		self.cancel_button = QtWidgets.QPushButton('cancle')
+		self.cancel_button.clicked.connect(self.close)	
 		self.button_layout.addStretch()
 		self.button_layout.addWidget(self.create_button)
 		self.button_layout.addWidget(self.cancel_button)
@@ -58,6 +64,11 @@ class PrimitiveCreator(QtWidgets.QDialog):
 
 	def dorenameobj(self):
 		name = self.name_lineEdit.text()
+		item =  self.primitive_listWidget.currentItem()
+		if item:  
+			prim_name = item.text()
+		pritil.createobj(name,prim_name)
+
 
 def run():
 	global ui

@@ -1,7 +1,29 @@
 import maya.cmds as cmds
 
-def renameobj(name, prims):
-	print(name)
-
-	for i in range(len(prims)):
-		setname = '{name}{index:0>3}'
+def createobj(name,item):
+	if item == "cone":
+		cmds.polyCone(
+			name = '{name}_geo'.format(
+				name = name
+				)
+		)
+	elif item == "cube":
+		cmds.polyCube(
+			name = '{name}_geo'.format(
+				name = name
+				)
+		)
+	elif item == "sphere":
+		cmds.polySphere(
+			name = '{name}_geo'.format(
+				name = name
+				)
+		)
+	elif item == "torus":
+		cmds.polyTorus(
+			name = '{name}_geo'.format(
+				name = name
+				)
+		)
+	else :
+		return
