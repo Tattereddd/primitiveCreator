@@ -15,7 +15,7 @@ class PrimitiveCreator(QtWidgets.QDialog):
 	def __init__(self, parent=None):
 		super().__init__(parent)
 
-		self.resize(300,150)
+		self.resize(315,200)
 		self.setWindowTitle('Primitive Creator')
 
 		self.main_layout = QtWidgets.QVBoxLayout()
@@ -55,6 +55,9 @@ class PrimitiveCreator(QtWidgets.QDialog):
 			item = QtWidgets.QListWidgetItem(prim)
 			item.setIcon(QtGui.QIcon(os.path.join(ICON_PATH, f'{prim}.png')))
 			self.primitive_listWidget.addItem(item)
+
+	def dorenameobj(self):
+		name = self.name_lineEdit.text()
 
 def run():
 	global ui
