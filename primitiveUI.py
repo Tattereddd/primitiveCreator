@@ -31,7 +31,9 @@ class PrimitiveCreator(QtWidgets.QDialog):
 		self.primitive_listWidget.setViewMode(QtWidgets.QListView.IconMode)
 		self.primitive_listWidget.setMovement(QtWidgets.QListView.Static)
 		self.primitive_listWidget.setResizeMode(QtWidgets.QListView.Adjust)
-
+		self.primitive_listWidget.setStyleSheet(
+				'''background-color: #898989'''
+			)
 
 		self.main_layout.addWidget(self.primitive_listWidget)
 
@@ -47,11 +49,19 @@ class PrimitiveCreator(QtWidgets.QDialog):
 		self.main_layout.addLayout(self.button_layout)
 		self.create_button = QtWidgets.QPushButton('CREATE')
 		self.create_button.clicked.connect(self.dorenameobj)	
-		self.cancel_button = QtWidgets.QPushButton('cancle')
+		self.cancel_button = QtWidgets.QPushButton('CANCEL')
 		self.cancel_button.clicked.connect(self.close)	
 		self.button_layout.addStretch()
 		self.button_layout.addWidget(self.create_button)
 		self.button_layout.addWidget(self.cancel_button)
+
+		self.create_button.setStyleSheet(
+				'''background-color: #40826D'''
+			)
+
+		self.cancel_button.setStyleSheet(
+				'''background-color: #824044'''
+			)
 
 		self.initIconWidgets()
 
